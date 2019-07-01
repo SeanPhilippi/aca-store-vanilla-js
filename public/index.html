@@ -9,9 +9,21 @@
 
 <body>
     <input type="text" id="searchBox" placeholder="Search..."><button onclick="search()">Search</button>
-    
-    <div id ="products"></div>
+    <ul>
+        <li id ="products"></li>
+    </ul>
 
+    <h2>CART</h2>
+        <div class="cart-row">
+            <span class="cart-item cart-header cart-column">ITEM</span>
+        </div>
+
+        <ul id="cart-items"></ul>
+        
+        <div class="cart-total">
+            <span class="cart-total-title">Total</span>
+            <span id="cart-total">$0.00</span>
+        </div>
      <script src="products.js"></script>    
     <script src="index.js"></script>   
 </body>
