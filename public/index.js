@@ -10,8 +10,13 @@ function Products(products, searchWord) {
     for (let i =0; i < products.length; i++) {
       let product = products[i];
       productLi += `
-<li>
-  ${product.name}
+<li class="product">
+  <div class="name">
+    ${product.name}
+  </div>
+  <div class="image" style="background-image: url(${product.imgUrl}";)>
+
+  </div>
   <div
     style="visibility: hidden;"
     id="${product.id}"
@@ -23,16 +28,19 @@ function Products(products, searchWord) {
       ${product.price}
     </div>
   </div>
+  <div class="button-container">
+    <button onclick="moreDetails(${product.id})">
+      ${detailsButton}
+    </button>
+    <button
+      onclick="addToCart(${product.id});
+      calculateCartTotal();"
+    >
+      ${toCartButton}
+    </button>
+  </div>
 </li>
-<button onclick="moreDetails(${product.id})">
-  ${detailsButton}
-</button>
-<button
-  onclick="addToCart(${product.id});
-  calculateCartTotal();"
->
-  ${toCartButton}
-</button>`;
+`;
       document.getElementById("products").innerHTML= productLi;
     }
   } else {

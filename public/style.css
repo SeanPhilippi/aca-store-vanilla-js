@@ -1,8 +1,67 @@
 /* setting default font size for rem */
 html {
-  font-size: 12px;
+  font-size: 15px;
+  background-color: #79f2e2;
+  background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
 }
 
-#products {
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: .2rem;
+  width: 20rem;
+  height: 1.4rem;
+  border-radius: 12px;
+}
+
+#search-box {
+  font-size: 1.2rem;
+  width: 90%;
+  border: none;
+  margin-left: .4rem;
+}
+
+/* products */
+#products {
+  margin-top: 1rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product {
+  padding: .4rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 16rem;
+  margin-bottom: .4rem;
+  margin-right: .4rem;
+  background-color: #e5fffa;
+  background-image: url("https://www.transparenttextures.com/patterns/diagonales-decalees.png");
+}
+
+.name {
+  text-align: center;
+  margin-bottom: .4rem;
+}
+
+.image {
+  margin: auto;
+  width: 10rem;
+  border: 1px black solid;
+  height: 10rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
 }
