@@ -5,13 +5,17 @@ html {
   background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
 }
 
+/* removing focus border for inputs */
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 
+.fa-search {
+  margin-left: .2rem;
+}
 
 .search-bar {
   display: flex;
@@ -19,8 +23,8 @@ button:focus {
   background-color: white;
   padding: .2rem;
   width: 20rem;
-  height: 1.4rem;
-  border-radius: 12px;
+  height: 1.6rem;
+  border-radius: 14px;
 }
 
 #search-box {

@@ -1,11 +1,10 @@
 let cart = [];
 
-function Products(products, searchWord) {
+function displayProducts(products, searchWord) {
   let productLi = "";
   let detailsButton = document.createElement('button').value = "More Details";
   let toCartButton = document.createElement('button').value = "Add to Cart";
   let noResults = `<h2>Sorry no results were found for "${searchWord}"</h2>`;
-  console.log('products', products);
   if (products.length > 0) {
     for (let i =0; i < products.length; i++) {
       let product = products[i];
@@ -44,16 +43,36 @@ function Products(products, searchWord) {
       document.getElementById("products").innerHTML= productLi;
     }
   } else {
-    console.log(2)
     document.getElementById("products").innerHTML= noResults;
   }
 }
 
 // on page load
-Products(products);
-let fetchedCartItems = JSON.parse(sessionStorage.getItem('cart'));
+displayProducts(products);
+let fetchedCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
 cart = fetchedCartItems;
 populateCart();
+
+// immediately invoked function, event listener for search input changes
+(function() {
+  let oldVal;
+
+  $('#search-box').on('change textInput input', () => {
+    const val = this.document.getElementById('search-box').value;
+    if (val !== oldVal) {
+      oldVal = val;
+      checkLength(val);
+    }
+  });
+}());
+
+function checkLength(val) {
+  if (val.length > 3) {
+    search(val);
+  } else if (val.length === 0) {
+    displayProducts(products);
+  }
+}
 
 function populateCart() {
   let cartItems = document.getElementById('cart-items');
@@ -69,7 +88,6 @@ function populateCart() {
       li.appendChild(price);
     });
   }
-
   // calculateTotal after populating cart
   calculateCartTotal();
 }
@@ -98,10 +116,7 @@ function moreDetails(id) {
 
 function addToCart(id) {
   let cartItems = document.getElementById('cart-items');
-  let product = products.find(function(product) {
-    return product.id == id;
-  });
-  console.log('product in cart', product)
+  let product = products.find(product => product.id == id);
   let li = document.createElement('li');
   li.appendChild(document.createTextNode(product.name));
   cartItems.appendChild(li);
@@ -123,18 +138,16 @@ function calculateCartTotal() {
     total = total + amount;
     total = Math.round(total * 100) / 100;
   }
-  console.log(total);
   let cartTotal = document.getElementById('cart-total');
   cartTotal.innerText = "$" + total;
 }
 
-function search(e) {
-  let searchWord = e.target.value.toLowerCase().trim();
+function search(value) {
+  let searchWord = value.toLowerCase().trim();
   let filteredProducts = products.filter(p => {
-    console.log(p.name);
-    // return product names that include searchWord, else empty array returned
+    // return product names that include searchWord, else return empty array
     return p.name.toLowerCase().includes(searchWord) && p.name;
   })
+  displayProducts(filteredProducts, searchWord);
 
-  Products(filteredProducts, searchWord);
 }
