@@ -8,8 +8,8 @@ const products = [{
   "price": "$95.11",
   "category": "food",
   "reviews": [{
-    "description": "architect revolutionary deliverables",
-    "rating": 2
+    "description": "made the sugar cookies",
+    "rating": 3
   }, {
     "description": "orchestrate dynamic schemas",
     "rating": 2
@@ -48,7 +48,7 @@ const products = [{
   "price": "$37.09",
   "category": "food",
   "reviews": [{
-    "description": "architect revolutionary deliverables",
+    "description": "white out conditions",
     "rating": 2
   }, {
     "description": "orchestrate dynamic schemas",
@@ -74,8 +74,8 @@ const products = [{
   "price": "$51.83",
   "category": "food",
    "reviews": [{
-    "description": "architect revolutionary deliverables",
-    "rating": 2
+    "description": "mysterious diary records",
+    "rating": 5
   }, {
     "description": "orchestrate dynamic schemas",
     "rating": 2
@@ -94,7 +94,7 @@ const products = [{
   "price": "$86.93",
   "category": "electronics",
    "reviews": [{
-    "description": "architect revolutionary deliverables",
+    "description": "A glittering gem",
     "rating": 2
   }, {
     "description": "orchestrate dynamic schemas",
@@ -114,7 +114,7 @@ const products = [{
   "price": "$70.10",
   "category": "electronics",
    "reviews": [{
-    "description": "architect revolutionary deliverables",
+    "description": "spotted striped blue worm",
     "rating": 2
   }, {
     "description": "orchestrate dynamic schemas",
@@ -174,8 +174,8 @@ const products = [{
   "price": "$67.17",
   "category": "sporting",
    "reviews": [{
-    "description": "architect revolutionary deliverables",
-    "rating": 2
+    "description": "old apple revels",
+    "rating": 4
   }, {
     "description": "orchestrate dynamic schemas",
     "rating": 2
@@ -194,7 +194,7 @@ const products = [{
   "price": "$96.84",
   "category": "sporting",
    "reviews": [{
-    "description": "architect revolutionary deliverables",
+    "description": "tuna and tomato sauce",
     "rating": 2
   }, {
     "description": "orchestrate dynamic schemas",
@@ -214,8 +214,8 @@ const products = [{
   "price": "$74.37",
   "category": "sporting",
    "reviews": [{
-    "description": "architect revolutionary deliverables",
-    "rating": 2
+    "description": "bathing in the ether",
+    "rating": 5
   }
 ]
 }];

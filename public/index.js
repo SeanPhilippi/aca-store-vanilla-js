@@ -47,7 +47,7 @@ function displayProducts(products, searchWord) {
       Reviews
     </div>
     <div class="review-preview">
-      <div>
+      <div class="review-inner">
         <span>${
           product.reviews.map(review => {
             return `

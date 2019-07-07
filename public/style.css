@@ -72,12 +72,20 @@ button:focus {
 /* reviews */
 .reviews {
   margin-top: 1rem;
-  padding: .4rem .4rem 0 .4rem;
+  padding: .4rem .2rem 0 .4rem;
   background-color: whitesmoke;
   border: 1px solid #c49c48;
   border-radius: 10px;
   height: 10rem;
-  overflow: auto;
+}
+
+.review-preview {
+  overflow: hidden;
+}
+
+.review-inner {
+  height: 8.5rem;
+  overflow-y: auto;
 }
 
 .fa-star {
