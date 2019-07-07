@@ -1,24 +1,28 @@
 let cart = [];
 
 function displayProducts(products, searchWord) {
-  let productLi = "";
+  let productsDiv = "";
   let detailsButton = document.createElement('button').value = "More Details";
   let toCartButton = document.createElement('button').value = "Add to Cart";
   let noResults = `<h2>Sorry no results were found for "${searchWord}"</h2>`;
+
   if (products.length > 0) {
     for (let i =0; i < products.length; i++) {
       let product = products[i];
-      productLi += `
+      productsDiv += `
 <li class="product">
   <div class="name">
     ${product.name}
   </div>
-  <div class="image" style="background-image: url(${product.imgUrl}";)>
-
+  <div
+    class="image"
+    style="background-image: url(${product.imgUrl}";)
+  >
   </div>
   <div
     style="visibility: hidden;"
     id="${product.id}"
+    class="details"
   >
     <div>
       ${product.description}
@@ -38,13 +42,45 @@ function displayProducts(products, searchWord) {
       ${toCartButton}
     </button>
   </div>
+  <section class="reviews">
+    <div>
+      Reviews
+    </div>
+    <div class="review-preview">
+      <div>
+        <span>${
+          product.reviews.map(review => {
+            return `
+<p>${review.description}</p>
+<span>${makeStars(Number(review.rating))}</span>
+`
+          }).join(' ')
+        }</span>
+      </div>
+    </div>
+  </section>
 </li>
 `;
-      document.getElementById("products").innerHTML= productLi;
+      document.getElementById("products").innerHTML= productsDiv;
     }
   } else {
     document.getElementById("products").innerHTML= noResults;
   }
+}
+
+function makeStars(num) {
+  console.log('success')
+  let stars = "";
+  let star = '<i class="fa fa-star" aria-hidden="true"></i>';
+  let emptyStar = '<i class="fa fa-star-o" aria-hidden="true"></i>';
+  for (let i = 0; i < num; i++) {
+    stars = stars + star
+  };
+  for (let j = 0; j < (5-num); j++) {
+    stars = stars + emptyStar;
+  }
+  console.log(stars)
+  return stars;
 }
 
 // on page load

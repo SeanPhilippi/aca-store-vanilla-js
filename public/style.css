@@ -65,6 +65,33 @@ button:focus {
   height: 10rem;
 }
 
+.details {
+  border: 1px solid white;
+}
+
+/* reviews */
+.reviews {
+  margin-top: 1rem;
+  padding: .4rem .4rem 0 .4rem;
+  background-color: whitesmoke;
+  border: 1px solid #c49c48;
+  border-radius: 10px;
+  height: 10rem;
+  overflow: auto;
+}
+
+.fa-star {
+  color: #ffd700;
+  text-shadow: 1px 1px 1px #ccc;
+  font-size: 1.1rem;
+}
+
+.fa-star-o {
+  color: #ffd700;
+  text-shadow: 1px 1px 1px #ccc;
+  font-size: 1.1rem;
+}
+
 .button-container {
   display: flex;
   justify-content: space-around;
