@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <input type="text" id="searchBox" placeholder="Search..."><button onclick="search()">Search</button>
+    <input onkeypress="handleKeyPress(event)" type="text" id="searchBox" placeholder="Search..."><button onclick="search()">Search</button>
     <ul>
         <li id ="products"></li>
     </ul>
@@ -19,12 +19,12 @@
         </div>
 
         <ul id="cart-items"></ul>
-        
+
         <div class="cart-total">
             <span class="cart-total-title">Total</span>
             <span id="cart-total">$0.00</span>
         </div>
-     <script src="products.js"></script>    
-    <script src="index.js"></script>   
+     <script src="products.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
