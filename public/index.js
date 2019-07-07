@@ -1,4 +1,27 @@
+// style cart items
+// make a product page for single product, where select element can be
+// used to select quantity to be added to cart with add to cart btn
+
 let cart = [];
+
+const moreDetails = id => {
+  let detailsDiv = document.getElementById(id);
+  if (detailsDiv) {
+    detailsDiv.style.visibility === "visible" ? detailsDiv.style.visibility = "hidden": detailsDiv.style.visibility = "visible";
+  }
+}
+
+const calculateCartTotal = () => {
+  let amounts = document.getElementsByClassName("amount");
+  let total = 0;
+  for (let i = 0; i < amounts.length; i++) {
+    const amount = parseFloat(amounts[i].innerText.replace('$', ''));
+    total = total + amount;
+    total = Math.round(total * 100) / 100;
+  }
+  let cartTotal = document.getElementById('cart-total');
+  cartTotal.innerText = "$" + total;
+}
 
 function displayProducts(products, searchWord) {
   let productsDiv = "";
@@ -68,8 +91,7 @@ function displayProducts(products, searchWord) {
   }
 }
 
-function makeStars(num) {
-  console.log('success')
+const makeStars = num => {
   let stars = "";
   let star = '<i class="fa fa-star" aria-hidden="true"></i>';
   let emptyStar = '<i class="fa fa-star-o" aria-hidden="true"></i>';
@@ -79,8 +101,25 @@ function makeStars(num) {
   for (let j = 0; j < (5-num); j++) {
     stars = stars + emptyStar;
   }
-  console.log(stars)
   return stars;
+}
+
+const populateCart = () => {
+  let cartItems = document.getElementById('cart-items');
+  if (fetchedCartItems) {
+    fetchedCartItems.forEach(product => {
+      let li = document.createElement('li');
+      li.appendChild(document.createTextNode(product.name));
+      cartItems.appendChild(li);
+      let price = document.createElement('span');
+      price.className = "amount";
+      price.style.paddingLeft = "10px";
+      price.appendChild(document.createTextNode(product.price));
+      li.appendChild(price);
+    });
+  }
+  // calculateTotal after populating cart
+  calculateCartTotal();
 }
 
 // on page load
@@ -102,7 +141,7 @@ populateCart();
   });
 }());
 
-function checkLength(val) {
+const checkLength = val => {
   if (val.length > 3) {
     search(val);
   } else if (val.length === 0) {
@@ -110,47 +149,7 @@ function checkLength(val) {
   }
 }
 
-function populateCart() {
-  let cartItems = document.getElementById('cart-items');
-  if (fetchedCartItems) {
-    fetchedCartItems.forEach(product => {
-      let li = document.createElement('li');
-      li.appendChild(document.createTextNode(product.name));
-      cartItems.appendChild(li);
-      let price = document.createElement('span');
-      price.className = "amount";
-      price.style.paddingLeft = "10px";
-      price.appendChild(document.createTextNode(product.price));
-      li.appendChild(price);
-    });
-  }
-  // calculateTotal after populating cart
-  calculateCartTotal();
-}
-
-// function handleKeyPress(e) {
-//     if (e.keyCode === 13) {
-//         e.preventDefault();
-//         search();
-//     }
-// }
-
-const handleChange = e => {
-  e.target.value;
-}
-
-function moreDetails(id) {
-  let detailsDiv = document.getElementById(id);
-  if (detailsDiv !== null) {
-    if (detailsDiv.style.visibility === "visible") {
-      detailsDiv.style.visibility = "hidden";
-    } else if (detailsDiv.style.visibility === "hidden") {
-      detailsDiv.style.visibility = "visible";
-    }
-  }
-}
-
-function addToCart(id) {
+const addToCart = id => {
   let cartItems = document.getElementById('cart-items');
   let product = products.find(product => product.id == id);
   let li = document.createElement('li');
@@ -166,19 +165,7 @@ function addToCart(id) {
   sessionStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function calculateCartTotal() {
-  let amounts = document.getElementsByClassName("amount");
-  let total = 0;
-  for (let i = 0; i < amounts.length; i++) {
-    const amount = parseFloat(amounts[i].innerText.replace('$', ''));
-    total = total + amount;
-    total = Math.round(total * 100) / 100;
-  }
-  let cartTotal = document.getElementById('cart-total');
-  cartTotal.innerText = "$" + total;
-}
-
-function search(value) {
+const search = value => {
   let searchWord = value.toLowerCase().trim();
   let filteredProducts = products.filter(p => {
     // return product names that include searchWord, else return empty array
