@@ -2,6 +2,7 @@
 // make a product page for single product, where select element can be
 // used to select quantity to be added to cart with add to cart btn
 // copy Focusmate colors
+// deploy to github pages
 
 let cart = [];
 
