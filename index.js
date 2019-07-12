@@ -5,6 +5,20 @@
 // deploy to github pages
 
 let cart = [];
+let products;
+
+window.onload = () => {
+  fetch('http://localhost:3000/products')
+    .then(res => res.json())
+    .then(fetchedProducts => {
+      products = fetchedProducts;
+    }).then(() => {
+      displayProducts(products);
+    });
+  let fetchedCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
+  cart = fetchedCartItems;
+  populateCart();
+};
 
 const moreDetails = id => {
   let detailsDiv = document.getElementById(id);
@@ -123,12 +137,6 @@ const populateCart = () => {
   // calculateTotal after populating cart
   calculateCartTotal();
 }
-
-// on page load
-displayProducts(products);
-let fetchedCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
-cart = fetchedCartItems;
-populateCart();
 
 // immediately invoked function, event listener for search input changes
 (function() {
