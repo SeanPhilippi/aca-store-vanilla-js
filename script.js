@@ -16,11 +16,12 @@ window.onload = () => {
   populateCart();
 };
 
-const moreDetails = id => {
+const moreDetails = (id, element) => {
   let detailsDiv = document.getElementById(id);
   if (detailsDiv) {
     detailsDiv.style.visibility === "visible" ? detailsDiv.style.visibility = "hidden": detailsDiv.style.visibility = "visible";
-  }
+  };
+  element.innerText === 'More Details' ? element.innerText = 'Hide Details' : element.innerText = 'More Details';
 }
 
 const calculateCartTotal = () => {
@@ -78,7 +79,7 @@ function displayProducts(products, searchWord) {
     </select>
   </div>
   <div class="button-container">
-    <button onclick="moreDetails(${product.id})">
+    <button onclick="moreDetails(${product.id}, this)">
       ${detailsButton}
     </button>
     <button
