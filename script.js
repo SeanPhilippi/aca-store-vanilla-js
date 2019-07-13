@@ -29,7 +29,7 @@ const calculateCartTotal = () => {
   // convert collection to array so I can utilize array methods
   let prices = [...htmlCollection];
   let total = 0;
-  prices = prices.map(price => Number(price.innerText));
+  prices = prices.map(price => Number(price.innerText.slice(1)));
   total = prices.reduce((acc, cv) => acc += cv);
   let cartTotal = document.getElementById('cart-total');
   cartTotal.innerText = "$" + total;
@@ -73,7 +73,7 @@ function displayProducts(products, searchWord) {
     </div>
   </div>
   <div id="quantity">
-    <select onchange="selectQuantity(event, this)">
+    <select>
       ${quantityOpts}
     </select>
   </div>
@@ -181,20 +181,6 @@ const selectCategory = e => {
   return e.target.value === 'all' ? displayProducts(products) : displayProducts(filteredByCat);
 }
 
-// ! might not even need this function, gonna try to just grab whatever number is held in the
-// ! quantity select element at the time addToCart is called
-// * actually I may need this... I need a way to store the quantity with the id of the product so that I can
-// * multiply this # by the price when addToCart is called.
-const selectQuantity = (e, product) => {
-  // multiply product price by this value
-  product.price *= Number(e.target.value);
-  // how to re-render product item?
-
-  // create new key on product object, and assign this number
-  product.quantity = Number(e.target.value);
-
-}
-
 const addToCart = (id, btnElement) => {
   let cartItems = document.getElementById('cart-items');
   let product = products.find(product => product.id == id);
@@ -208,7 +194,7 @@ const addToCart = (id, btnElement) => {
   let amount = product.price.slice(1);
   let quantity = Number(btnElement.parentNode.parentNode.querySelector('select').value);
   amount *= quantity;
-  price.appendChild(document.createTextNode(amount));
+  price.appendChild(document.createTextNode(`$${amount}`));
   li.appendChild(price);
   // add to cart array for storage in sessionStorage
   cart.push(product);
