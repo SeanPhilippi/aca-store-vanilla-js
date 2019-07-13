@@ -1,9 +1,4 @@
 // * run `json-server db.json to start localhost server and restart anytime changes are made to db.json!`
-// style cart items
-// make a product page for single product, where select element can be
-// used to select quantity to be added to cart with add to cart btn
-// copy Focusmate colors
-// deploy to github pages
 
 let cart = [];
 let products;
@@ -179,7 +174,6 @@ const search = value => {
     return p.name.toLowerCase().includes(searchWord) && p.name;
   })
   displayProducts(filteredProducts, searchWord);
-
 }
 
 const selectCategory = e => {
