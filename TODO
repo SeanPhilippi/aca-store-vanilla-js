@@ -2,3 +2,5 @@
 - make lightbox modal or redirect to new page for detailed product page
 - copy Focusmate colors
 - create checkout button that opens a lightbox modal
+- put cart modal as fixed floating element in top right of screen
+  - can click 'view cart' button to get a modal displaying the cart with items, showing item details

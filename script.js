@@ -25,13 +25,12 @@ const moreDetails = (id, element) => {
 }
 
 const calculateCartTotal = () => {
-  let amounts = document.getElementsByClassName("amount");
+  let htmlCollection = document.getElementsByClassName("price");
+  // convert collection to array so I can utilize array methods
+  let prices = [...htmlCollection];
   let total = 0;
-  for (let i = 0; i < amounts.length; i++) {
-    const amount = parseFloat(amounts[i].innerText.replace('$', ''));
-    total = total + amount;
-    total = Math.round(total * 100) / 100;
-  }
+  prices = prices.map(price => Number(price.innerText));
+  total = prices.reduce((acc, cv) => acc += cv);
   let cartTotal = document.getElementById('cart-total');
   cartTotal.innerText = "$" + total;
 }
@@ -74,7 +73,7 @@ function displayProducts(products, searchWord) {
     </div>
   </div>
   <div id="quantity">
-    <select>
+    <select onchange="selectQuantity(event, this)">
       ${quantityOpts}
     </select>
   </div>
@@ -83,7 +82,7 @@ function displayProducts(products, searchWord) {
       ${detailsButton}
     </button>
     <button
-      onclick="addToCart(${product.id});
+      onclick="addToCart(${product.id}, this);
       calculateCartTotal();"
     >
       ${toCartButton}
@@ -137,7 +136,7 @@ const populateCart = () => {
       li.appendChild(document.createTextNode(product.name));
       cartItems.appendChild(li);
       let price = document.createElement('span');
-      price.className = "amount";
+      price.className = "price";
       price.style.paddingLeft = "10px";
       price.appendChild(document.createTextNode(product.price));
       li.appendChild(price);
@@ -182,16 +181,34 @@ const selectCategory = e => {
   return e.target.value === 'all' ? displayProducts(products) : displayProducts(filteredByCat);
 }
 
-const addToCart = id => {
+// ! might not even need this function, gonna try to just grab whatever number is held in the
+// ! quantity select element at the time addToCart is called
+// * actually I may need this... I need a way to store the quantity with the id of the product so that I can
+// * multiply this # by the price when addToCart is called.
+const selectQuantity = (e, product) => {
+  // multiply product price by this value
+  product.price *= Number(e.target.value);
+  // how to re-render product item?
+
+  // create new key on product object, and assign this number
+  product.quantity = Number(e.target.value);
+
+}
+
+const addToCart = (id, btnElement) => {
   let cartItems = document.getElementById('cart-items');
   let product = products.find(product => product.id == id);
   let li = document.createElement('li');
   li.appendChild(document.createTextNode(product.name));
   cartItems.appendChild(li);
   let price = document.createElement('span');
-  price.className = "amount";
+  price.className = "price";
   price.style.paddingLeft = "10px";
-  price.appendChild(document.createTextNode(product.price));
+  // get rid of '$' in front of amount
+  let amount = product.price.slice(1);
+  let quantity = Number(btnElement.parentNode.parentNode.querySelector('select').value);
+  amount *= quantity;
+  price.appendChild(document.createTextNode(amount));
   li.appendChild(price);
   // add to cart array for storage in sessionStorage
   cart.push(product);
