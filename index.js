@@ -1,3 +1,4 @@
+// * run `json-server db.json to start localhost server`
 // style cart items
 // make a product page for single product, where select element can be
 // used to select quantity to be added to cart with add to cart btn
@@ -48,6 +49,12 @@ function displayProducts(products, searchWord) {
   if (products.length > 0) {
     for (let i =0; i < products.length; i++) {
       let product = products[i];
+      let quantityOpts = '<option value="1">--Quantity--</option>';
+      // concatenating option elements to temple literal, maxSelect # of times
+      for (let j = 0; j < product.maxSelect; j++) {
+        quantityOpts += `<option value="${j + 1}">${j + 1}</option>`;
+      }
+      // concatenate a li element to this template literal for each product
       productsDiv += `
 <li class="product">
   <div class="name">
@@ -69,6 +76,11 @@ function displayProducts(products, searchWord) {
     <div>
       ${product.price}
     </div>
+  </div>
+  <div id="quantity">
+    <select>
+      ${quantityOpts}
+    </select>
   </div>
   <div class="button-container">
     <button onclick="moreDetails(${product.id})">
@@ -100,10 +112,11 @@ function displayProducts(products, searchWord) {
   </section>
 </li>
 `;
-      document.getElementById("products").innerHTML= productsDiv;
+      // assign innerHTML prop to template literal composed of li elements for each product
+      document.getElementById("products").innerHTML = productsDiv;
     }
   } else {
-    document.getElementById("products").innerHTML= noResults;
+    document.getElementById("products").innerHTML = noResults;
   }
 }
 

@@ -65,6 +65,15 @@ button:focus {
   height: 10rem;
 }
 
+/* buttons */
+
+#quantity {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+  margin-bottom: .5rem;
+}
+
 .details {
   border: 1px solid white;
 }
