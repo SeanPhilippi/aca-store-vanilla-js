@@ -13,6 +13,16 @@
       <i class="fa fa-search" aria-hidden="true"></i>
       <input onchange="checkLength(this.value)" type="text" id="search-box" placeholder="Search...">
     </div>
+    <div id="categories">
+      Select Category:
+      <select onchange="selectCategory(event)">
+        <option id="all" class="options" value="all">--Choose--</option>
+        <option class="options" value="food">Food</option>
+        <option class="options" value="electronics">Electronics</option>
+        <option class="options" value="sporting">Sporting</option>
+      </select>
+      <hr>
+    </div>
     <div>
       <div id ="products">
         Everything is currently out of stock, sorry! Please check back soon.
@@ -34,6 +44,6 @@
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
       crossorigin="anonymous">
     </script>
-    <script src="./index.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

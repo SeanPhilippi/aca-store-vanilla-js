@@ -1,4 +1,4 @@
-// * run `json-server db.json to start localhost server`
+// * run `json-server db.json to start localhost server and restart anytime changes are made to db.json!`
 // style cart items
 // make a product page for single product, where select element can be
 // used to select quantity to be added to cart with add to cart btn
@@ -172,6 +172,21 @@ const checkLength = val => {
   }
 }
 
+const search = value => {
+  let searchWord = value.toLowerCase().trim();
+  let filteredProducts = products.filter(p => {
+    // return product names that include searchWord, else return empty array
+    return p.name.toLowerCase().includes(searchWord) && p.name;
+  })
+  displayProducts(filteredProducts, searchWord);
+
+}
+
+const selectCategory = e => {
+  let filteredByCat = products.filter(product => product.category === e.target.value);
+  return e.target.value === 'all' ? displayProducts(products) : displayProducts(filteredByCat);
+}
+
 const addToCart = id => {
   let cartItems = document.getElementById('cart-items');
   let product = products.find(product => product.id == id);
@@ -186,14 +201,4 @@ const addToCart = id => {
   // add to cart array for storage in sessionStorage
   cart.push(product);
   sessionStorage.setItem('cart', JSON.stringify(cart));
-}
-
-const search = value => {
-  let searchWord = value.toLowerCase().trim();
-  let filteredProducts = products.filter(p => {
-    // return product names that include searchWord, else return empty array
-    return p.name.toLowerCase().includes(searchWord) && p.name;
-  })
-  displayProducts(filteredProducts, searchWord);
-
 }

@@ -5,6 +5,11 @@
       "email": "jon@austincodingacademy.com",
       "password": "pass12345",
       "cartId": null
+    },
+    {
+      "email": "skfld",
+      "password": "fjksld",
+      "id": 2
     }
   ],
   "carts": [
