@@ -9,38 +9,44 @@
   </head>
 
   <body>
-    <div class="search-bar">
-      <i class="fa fa-search" aria-hidden="true"></i>
-      <input onchange="checkLength(this.value)" type="text" id="search-box" placeholder="Search...">
-    </div>
-    <div id="categories">
-      <div id="category-label">
-        Select Category:
+    <div id="container">
+      <div id="upper-container">
+        <div class="search-bar">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input onchange="checkLength(this.value)" type="text" id="search-box" placeholder="Search...">
+        </div>
+        <div id="cart">
+          <div id="cart-title">Cart</div>
+          <!-- ! make a car page for this -->
+          <ul id="cart-items">
+            <!-- restyle or reconsider moving to its own page -->
+          </ul>
+
+          <div class="cart-total">
+            <span class="cart-total-title">Total: </span>
+            <span id="cart-total">$0.00</span>
+          </div>
+        </div>
       </div>
-      <select onchange="selectCategory(event)">
-        <option id="all" class="options" value="all">--Choose--</option>
-        <option class="options" value="food">Food</option>
-        <option class="options" value="electronics">Electronics</option>
-        <option class="options" value="sporting">Sporting</option>
-      </select>
-      <hr>
-    </div>
-    <div>
-      <div id ="products">
-        Everything is currently out of stock, sorry! Please check back soon.
+      <div id="categories">
+        <div id="category-label">
+          Select Category:
+        </div>
+        <select onchange="selectCategory(event)">
+          <option id="all" class="options" value="all">--Choose--</option>
+          <option class="options" value="food">Food</option>
+          <option class="options" value="electronics">Electronics</option>
+          <option class="options" value="sporting">Sporting</option>
+        </select>
+        <hr>
+      </div>
+      <div>
+        <div id ="products">
+          Everything is currently out of stock, sorry! Please check back soon.
+        </div>
       </div>
     </div>
 
-    <h2>Cart</h2>
-
-      <ul id="cart-items">
-        <!-- restyle or reconsider moving to its own page -->
-      </ul>
-
-      <div class="cart-total">
-        <span class="cart-total-title">Total: </span>
-        <span id="cart-total">$0.00</span>
-      </div>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="

@@ -13,6 +13,29 @@ button:focus {
   outline: none;
 }
 
+#container {
+  margin: 1.2rem 1rem
+}
+
+#upper-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Cart */
+#cart {
+  margin-right: 1rem;
+  width: 10rem;
+}
+
+#cart-title {
+  font-size: 1.5rem;
+}
+
+#cart-items {
+  display: none;
+}
+
 .fa-search {
   margin-left: .2rem;
 }

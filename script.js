@@ -120,10 +120,10 @@ const makeStars = num => {
   let star = '<i class="fa fa-star" aria-hidden="true"></i>';
   let emptyStar = '<i class="fa fa-star-o" aria-hidden="true"></i>';
   for (let i = 0; i < num; i++) {
-    stars = stars + star
+    stars += star;
   };
   for (let j = 0; j < (5-num); j++) {
-    stars = stars + emptyStar;
+    stars += emptyStar;
   }
   return stars;
 }
