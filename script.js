@@ -32,7 +32,7 @@ const calculateCartTotal = () => {
   prices = prices.map(price => Number(price.innerText.slice(1)));
   total = prices.reduce((acc, cv) => acc += cv);
   let cartTotal = document.getElementById('cart-total');
-  cartTotal.innerText = "$" + total;
+  cartTotal.innerText = "$" + total.toFixed(2);
 }
 
 function displayProducts(products, searchWord) {
